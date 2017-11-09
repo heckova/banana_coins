@@ -1,0 +1,38 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    font-weight: 100;
+}
+
+/* ===========================================
+                    HEADERR
+==============================================*/
+.header {
+    width: 100vw;
+    font-family: 'Cabin Sketch', cursive;
+    text-align: center;
+    background-color: #F7CE3E;
+    color: #1a2930;
+    margin: 0;
+    padding: 20px;
+
+}
+
+table {
+    width: 100vw;
+    text-align: center;
+    margin-top: 10px;
+    border-collapse: collapse;
+
+}
+
+td, th {
+    border: 1px solid white;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #c5c1c0;
+    color: white;
+}
