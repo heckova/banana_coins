@@ -6,6 +6,7 @@ import Header from "./components/header";
 import Table from "./components/table";
 import CoinSearch from "./components/coinSearch";
 
+
 const App = () => {
     return <div>
         <Header/>
