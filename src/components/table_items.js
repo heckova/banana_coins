@@ -1,9 +1,16 @@
 import React from "react";
 
-class TableItems extends React.Component{
+class TableItems extends React.Component {
+    constructor(props) {
+        super(props);
 
-    render(){
-        return(
+        this.state = {
+            items: []
+        }
+    }
+
+    render() {
+        return (
             <tr>
                 <td>coin</td>
                 <td>amount</td>

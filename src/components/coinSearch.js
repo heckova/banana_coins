@@ -1,6 +1,8 @@
 import React from "react";
 import ListOfNames from "../components/listOfNames";
 
+let inputValue = "";
+
 class CoinSearch extends React.Component {
     constructor(props) {
         super(props);
@@ -16,10 +18,16 @@ class CoinSearch extends React.Component {
         this.onButtonClick = this.onButtonClick.bind(this);
         this.onInputClick = this.onInputClick.bind(this);
         this.onCoinClick = this.onCoinClick.bind(this);
+        this.valueOfValue = this.valueOfValue.bind(this);
     }
 
     onCoinClick(selected) {
-        console.log("I am here: " + selected);
+        let selectedItem = selected.item;
+        this.setState({chosenCoin: selectedItem});
+        this.setState({showListOfNames: false});
+        console.log(selectedItem);
+
+
     };
 
     onButtonClick() {
@@ -33,6 +41,7 @@ class CoinSearch extends React.Component {
 
     onInputChange(event) {
         let searchName = event.target.value;
+        inputValue = searchName;
 
         this.setState({coinName: searchName});
         let filteredNames = this.state.allCoins;
@@ -44,10 +53,20 @@ class CoinSearch extends React.Component {
         this.setState({showListOfNames: true});
     }
 
+    valueOfValue() {
+        if (this.state.chosenCoin === "") {
+            return inputValue
+        }
+        else {
+            return this.state.chosenCoin
+        }
+    };
+
     onInputClick() {
         if (this.state.showListOfNames === false) {
             this.setState({showListOfNames: true});
             this.setState({showedNames: this.state.allCoins});
+            this.setState({chosenCoin: ""})
         }
         else {
             this.setState({showListOfNames: false})
@@ -63,25 +82,30 @@ class CoinSearch extends React.Component {
                 let names = data.map((result) => {
                     return result.name;
                 });
-                console.log("Loaded all coins");
                 this.setState({allCoins: names});
-                console.log(names);
+                // console.log(names);
             })
     }
 
     render() {
         return (
             <div className="coinSearch">
-                <button onClick={this.onButtonClick}>Add new coin</button>
+                <button onClick={this.onButtonClick}><i className="fa fa-plus" aria-hidden="true"/> New Coin</button>
                 {this.state.showPopup ?
                     <div className="popup">
                         <div className="dialog">
                             <label>Name of Coin</label>
-                            <input onClick={this.onInputClick} type="text" onChange={this.onInputChange.bind(this)}/>
+                            <input onClick={this.onInputClick} type="text"
+                                   onChange={this.onInputChange.bind(this)}
+                                   value={this.valueOfValue()}/>
 
                             {this.state.showListOfNames ?
                                 <ListOfNames names={this.state.showedNames}
                                              onCoinClick={this.onCoinClick}/> : null}
+                            <label>Amount</label>
+                            <input type="number"/>
+                            <label>Buy Price</label>
+                            <input type="number"/>
                         </div>
                         <div className="buttons">
                             <button>Add</button>

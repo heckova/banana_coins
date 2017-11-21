@@ -41,21 +41,80 @@ th {
                     COINSEARCH
 ==============================================*/
 .coinSearch {
+    display: block;
+    width: 100vw;
+    text-align: center;
+}
+
+.coinSearch button {
+    color: #F7CE3E;
+    background-color: white;
+    border: 1px solid #F7CE3E;
+    padding: 10px;
+    font-size: large;
+    width: 500px;
+    max-width: 25%;
+    flex: 0 0 auto;
+    margin: 20px;
+    min-width: 100px;
+}
+
+.coinSearch button:hover {
+    background-color: #c5c1c0;
+    color: #1a2930;
+    border: none;
 }
 
 .popup {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    display: block;
     padding: 20px;
     background-color: white;
+    margin: 20px;
+    text-align: center;
 }
 
 .dialog {
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
+    width: 100%;
+    text-align: left;
+}
+
+.dialog label {
+    display: block;
+}
+
+.dialog input {
+    width: 100%;
+}
+
+.dialog input {
+    position: relative;
+    border: 1px solid #1a2930;
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: block;
+    width: 100%;
+    margin: 5px;
+    margin-top: 20px;
+
+}
+
+.buttons button {
+    position: relative;
+    margin: 0;
+    width: 100% !important;
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.buttons button:hover {
+    background-color: #c5c1c0;
+    color: #1a2930;
+    border: none;
 }
 
 .listOfNames {
@@ -65,10 +124,8 @@ th {
     height: 100px;
 }
 
-.buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.coinName {
+    padding: 10px;
 }
 
 .coinName:hover {

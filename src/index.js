@@ -8,6 +8,7 @@ import CoinSearch from "./components/coinSearch";
 
 
 const App = () => {
+
     return <div>
         <Header/>
         <CoinSearch/>
