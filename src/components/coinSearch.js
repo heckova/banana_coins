@@ -11,21 +11,28 @@ class CoinSearch extends React.Component {
             showedNames: [],
             allCoins: [],
             coinName: "",
-            chosenCoin: "",
             showPopup: false,
-            showListOfNames: false
+            showListOfNames: false,
+
+            chosenCoin: "",
+            amount: 0,
+            buyPrice: 0,
         };
         this.onButtonClick = this.onButtonClick.bind(this);
         this.onInputClick = this.onInputClick.bind(this);
         this.onCoinClick = this.onCoinClick.bind(this);
         this.valueOfValue = this.valueOfValue.bind(this);
+        this.onInputChange = this.onInputChange.bind(this);
+        this.onAmountChange = this.onAmountChange.bind(this);
+        this.onBuyPriceChange = this.onBuyPriceChange.bind(this);
+        this.onAddClick = this.onAddClick.bind(this);
     }
 
     onCoinClick(selected) {
         let selectedItem = selected.item;
         this.setState({chosenCoin: selectedItem});
         this.setState({showListOfNames: false});
-        console.log(selectedItem);
+        // console.log(selectedItem);
 
 
     };
@@ -37,6 +44,18 @@ class CoinSearch extends React.Component {
         else {
             this.setState({showPopup: false})
         }
+    }
+
+    onAddClick() {
+        const result = {
+            coin: this.state.chosenCoin,
+            amount: this.state.amount,
+            buyPrice: this.state.buyPrice
+        };
+
+        this.props.addToCoins(result);
+
+        this.setState({showPopup: false});
     }
 
     onInputChange(event) {
@@ -51,6 +70,18 @@ class CoinSearch extends React.Component {
 
         this.setState({showedNames: filteredNames});
         this.setState({showListOfNames: true});
+    }
+
+    onAmountChange(event) {
+        let amount = event.target.value;
+
+        this.setState({amount: amount});
+        // console.log(this.state.amount);
+    }
+
+    onBuyPriceChange(event) {
+
+        this.setState({buyPrice: event.target.value})
     }
 
     valueOfValue() {
@@ -96,19 +127,19 @@ class CoinSearch extends React.Component {
                         <div className="dialog">
                             <label>Name of Coin</label>
                             <input onClick={this.onInputClick} type="text"
-                                   onChange={this.onInputChange.bind(this)}
+                                   onChange={this.onInputChange}
                                    value={this.valueOfValue()}/>
 
                             {this.state.showListOfNames ?
                                 <ListOfNames names={this.state.showedNames}
                                              onCoinClick={this.onCoinClick}/> : null}
                             <label>Amount</label>
-                            <input type="number"/>
+                            <input type="number" onChange={this.onAmountChange}/>
                             <label>Buy Price</label>
-                            <input type="number"/>
+                            <input type="number" onChange={this.onBuyPriceChange}/>
                         </div>
                         <div className="buttons">
-                            <button>Add</button>
+                            <button onClick={this.onAddClick}>Add</button>
                             <button onClick={this.onButtonClick}>Cancel</button>
                         </div>
                     </div> : null}

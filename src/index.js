@@ -7,14 +7,34 @@ import Table from "./components/table";
 import CoinSearch from "./components/coinSearch";
 
 
-const App = () => {
+class App extends React.Component {
+    addToCoins = (coinInfo) => {
+        this.setState({coins: [this.state.coins, coinInfo]});
+        console.log("Coin " + coinInfo.coin + ", amount: " + coinInfo.amount + ", price: " + coinInfo.buyPrice);
+    };
 
-    return <div>
-        <Header/>
-        <CoinSearch/>
-        <Table/>
-    </div>
-};
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            coins: []
+        };
+
+
+        this.addToCoins = this.addToCoins.bind(this)
+    }
+
+    render() {
+        return (
+            <div>
+                <Header/>
+                <CoinSearch addToCoins={this.addToCoins}/>
+                <Table/>
+            </div>
+        )
+    }
+
+}
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 registerServiceWorker();

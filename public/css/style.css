@@ -52,11 +52,11 @@ th {
     border: 1px solid #F7CE3E;
     padding: 10px;
     font-size: large;
-    width: 500px;
-    max-width: 25%;
     flex: 0 0 auto;
     margin: 20px;
-    min-width: 100px;
+    max-width: 300px;
+    min-width: 150px;
+
 }
 
 .coinSearch button:hover {
@@ -69,8 +69,11 @@ th {
     display: block;
     padding: 20px;
     background-color: white;
-    margin: 20px;
+    margin: auto;
     text-align: center;
+    width: auto;
+    max-width: 350px;
+    box-sizing: border-box;
 }
 
 .dialog {
@@ -84,9 +87,7 @@ th {
 
 .dialog input {
     width: 100%;
-}
-
-.dialog input {
+    max-width: 300px;
     position: relative;
     border: 1px solid #1a2930;
     margin: 5px;
@@ -99,6 +100,7 @@ th {
     width: 100%;
     margin: 5px;
     margin-top: 20px;
+    max-width: 300px;
 
 }
 
