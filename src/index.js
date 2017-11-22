@@ -9,8 +9,8 @@ import CoinSearch from "./components/coinSearch";
 
 class App extends React.Component {
     addToCoins = (coinInfo) => {
-        this.setState({coins: [this.state.coins, coinInfo]});
-        console.log("Coin " + coinInfo.coin + ", amount: " + coinInfo.amount + ", price: " + coinInfo.buyPrice);
+        this.setState({coins: this.state.coins.concat([coinInfo])});
+        console.log("Coin " + coinInfo.coin + ", amount: " + coinInfo.amount + ", price: " + coinInfo.buyPrice + "\ndetails: " + JSON.stringify(coinInfo.details));
     };
 
     constructor(props) {
@@ -29,7 +29,7 @@ class App extends React.Component {
             <div>
                 <Header/>
                 <CoinSearch addToCoins={this.addToCoins}/>
-                <Table/>
+                <Table coinsToAdd={this.state.coins}/>
             </div>
         )
     }

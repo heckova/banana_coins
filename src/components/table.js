@@ -1,7 +1,26 @@
 import React from "react";
-import TableItems from "./table_items"
 
-const Table = () => {
+
+const Table = (props) => {
+
+    console.log(props.coinsToAdd);
+
+    const tableItems = (allDetails) => {
+        if (allDetails.length) {
+            return allDetails.map((item) => {
+
+                return <tr key={item.id}>
+                    <td>{item.coin}</td>
+                    <td>{item.amount}</td>
+                    <td>{item.details.price_usd + " USD"}</td>
+                    <td>{item.buyPrice}</td>
+                    <td>{(item.details.price_usd / item.buyPrice ) * 100 + "%"}</td>
+                </tr>
+
+            })
+        }
+    };
+
     return <table>
         <tbody>
         <tr>
@@ -11,7 +30,7 @@ const Table = () => {
             <th>Entry Price</th>
             <th>ROI</th>
         </tr>
-        <TableItems/>
+        {tableItems(props.coinsToAdd)}
         </tbody>
     </table>
 };

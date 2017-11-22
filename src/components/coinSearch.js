@@ -10,6 +10,7 @@ class CoinSearch extends React.Component {
         this.state = {
             showedNames: [],
             allCoins: [],
+            allCoinsInfo: [],
             coinName: "",
             showPopup: false,
             showListOfNames: false,
@@ -50,7 +51,10 @@ class CoinSearch extends React.Component {
         const result = {
             coin: this.state.chosenCoin,
             amount: this.state.amount,
-            buyPrice: this.state.buyPrice
+            buyPrice: this.state.buyPrice,
+            details: this.state.allCoinsInfo.find((item) => {
+                return (item.name === this.state.chosenCoin);
+            })
         };
 
         this.props.addToCoins(result);
@@ -108,6 +112,10 @@ class CoinSearch extends React.Component {
         fetch("https://api.coinmarketcap.com/v1/ticker/")
             .then(results => {
                 return results.json();
+            })
+            .then(data => {
+                this.setState({allCoinsInfo: data});
+                return data;
             })
             .then(data => {
                 let names = data.map((result) => {
