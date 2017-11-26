@@ -33,6 +33,8 @@ const Table = (props) => {
         {tableItems(props.coinsToAdd)}
         </tbody>
     </table>
+
 };
+
 
 export default Table;

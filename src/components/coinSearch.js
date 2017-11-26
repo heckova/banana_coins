@@ -118,6 +118,10 @@ class CoinSearch extends React.Component {
                 return data;
             })
             .then(data => {
+                this.setState({allCoinsInfo: data});
+                return data;
+            })
+            .then(data => {
                 let names = data.map((result) => {
                     return result.name;
                 });
